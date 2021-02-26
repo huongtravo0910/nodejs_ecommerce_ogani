@@ -1,0 +1,81 @@
+ <!-- Checkout Section Begin -->
+ <section class="checkout spad">
+    <div class="container">      
+        <div class="processing">
+            <div style="margin-bottom: 40px;">
+                <span style="display: inline-block; border-bottom: 4px solid green; width: 100px;">Log in</span>
+                <span style="display: inline-block; border-bottom: 4px solid green; width: 100px;margin-left: -10px;">Shipping</span>
+                <span style="display: inline-block; border-bottom: 4px solid green; width: 100px;margin-left: -10px;">Payment</span>
+                <span style="display: inline-block; border-bottom: 4px solid green; width: 100px;margin-left: -10px;">Place Order</span>
+            </div>
+            
+        </div>
+        <div class="checkout__form">
+            <h4>Place order</h4>
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Fist Name</p>
+                                    <input type="text" value="{{o.firstName}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Last Name</p>
+                                    <input type="text" value="{{o.lastName}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Address</p>
+                            <input type="text" value="{{o.address}}" readonly >
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Phone</p>
+                                    <input type="text" type="number" value={{o.phone}} readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Email</p>
+                                    <input type="text" value={{o.payment}} readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                                <h4>Your Order</h4>
+                                <div class="checkout__order__products">Products <span>Total</span></div>
+                                <ul>
+                                    {{#each arr}}
+                                    <li>{{name}} <span>{{formatCurrency price}}</span></li>
+                                    {{/each}}
+                                </ul>
+                                <div class="checkout__order__subtotal">Subtotal <span>{{formatCurrency total}}</span></div>
+                                <div class="checkout__order__total">Total <span>{{formatCurrency total}}</span></div>
+                                <div class="checkout__input__checkbox">
+                                    <div style="font-size: 18px;color: #1c1c1c;font-weight: 700;padding-bottom: 15px;">Payment</div>
+                                    <label for="paymentMethod">
+                                        {{o.payment}}
+                                        <input type="checkbox" id="paymentMethod" checked onclick="return false">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <button type="submit" id="btnOrder" class="site-btn">
+                                    <a style="color:#ffffff" href="/cart/addinvoice">PLACE ORDER</a>
+                                    </button>
+                                                 
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Checkout Section End -->

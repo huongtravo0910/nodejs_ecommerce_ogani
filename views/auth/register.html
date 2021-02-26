@@ -1,0 +1,65 @@
+<section class="checkout spad">
+  <div class="container">
+    <div class="checkout__form">
+      <h4>Register</h4>
+      {{{messageAlert message}}}
+      <form action="/auth/register" method="post">
+        <div class="row">
+          <div class="col-lg-12 col-md-6">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="checkout__input">
+                  <p>Username<span>*</span></p>
+                  <input type="text" name="username" />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="checkout__input">
+                  <p>Email<span>*</span></p>
+                  <input type="text" name="email" />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="checkout__input">
+                    <p>Password<span>*</span></p>
+                    <input type="password" name="password" />
+                  </div>
+              </div>
+              <div class="col-lg-12">     
+                <div class="checkout__input">
+                    <p>Gender<span>*</span></p>
+                    <p>
+                    <label>
+                        <input style="width: auto; margin-right: 10px; height: auto; border: 1px solid #ebebeb; padding-left: 0px;" type="checkbox" value="Male" name="gender" />Male</label>
+                    </p>
+                   <p>
+                    <label>
+                        <input style="width: auto; margin-right: 10px; height: auto; border: 1px solid #ebebeb; padding-left: 0px;" type="checkbox" value="Female" name="gender" />Female</label>
+                   </p>
+                   <p>
+                    <label>
+                        <input style="width: auto; margin-right: 10px; height: auto; border: 1px solid #ebebeb; padding-left: 0px;" type="checkbox" value="Undefined" name="gender" />Undefined</label>
+                   </p>               
+                </div>
+                <button id="btn" type="submit" class="site-btn">NEXT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$("input:checkbox").on('click', function() {
+  const $box = $(this);
+  if ($box.is(":checked")) {
+    const group = "input:checkbox[name='" + $box.attr("name") + "']";
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});
+</script>

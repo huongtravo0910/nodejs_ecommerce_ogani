@@ -1,0 +1,142 @@
+  <!-- Hero Section Begin -->
+<section class="hero hero-normal">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="hero__categories">
+        <div class="hero__categories__all">
+          <i class="fa fa-bars"></i>
+          <span>All departments</span>
+        </div>
+        <ul>
+          {{#each categories}}
+          <li><a href="/product/category/{{this}}">{{this}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="hero__search">
+        <div class="hero__search__form">
+          <form action="/product/search">
+            <input
+              type="search"
+              placeholder="What do yo u need?"
+              name="q"
+              value="{{q}}"
+            />
+            <button type="submit" class="site-btn">SEARCH</button>
+          </form>
+        </div>
+        <div class="hero__search__phone">
+          <div class="hero__search__phone__icon">
+            <i class="fa fa-phone"></i>
+          </div>
+          <div class="hero__search__phone__text">
+            <h5>+65 11.188.888</h5>
+            <span>support 24/7 time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- Hero Section End -->   
+   
+   <!-- Shoping Cart Section Begin -->
+   <section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__btns">
+                    <a href="/" class="primary-btn cart-btn" style="margin-bottom: 20px; background-color: white; border: 1px solid #7fad39;">CONTINUE SHOPPING</a>                    
+                </div>
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each a}}
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <div class="imageOuter">
+                                        <img src="/img/product/{{imageUrl}}" alt="">
+                                    </div>                                  
+                                    <h5>{{name}}</h5>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    {{formatCurrency price}}
+                                </td>
+                                <td class="shoping__cart__quantity">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" name="qty" value="{{qty}}" productId='{{productId}}'>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__total">{{formatCurrency eachTotal}}</td>                                  
+                                </td>
+                                    <td class="shoping__cart__item__close">
+                                        <a href="/cart/del/{{_id}}">
+                                            <span class="icon_close"></span>
+                                        </a>                                        
+                                    </td>                           
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__btns">
+                    <a href="/" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    <a href="/cart" class="primary-btn cart-btn cart-btn-right">Update Cart</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__continue">
+                    <div class="shoping__discount">
+                        <h5>Discount Codes</h5>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your coupon code">
+                            <button type="submit" class="site-btn">APPLY COUPON</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__checkout">
+                    <h5>Cart Total</h5>
+                    <ul>
+                        <li>Subtotal <span>{{ formatCurrency cartTotal}}</span></li>
+                        <li>Total <span>{{formatCurrency cartTotal}}</span></li>
+                    </ul>
+                    <a href="/cart/shipping" class="primary-btn">PROCEED TO CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shoping Cart Section End -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(".quantity").click(function(){
+		const productId = $(this).find("input").attr("productId");
+		const qty = $(this).find("input").val();
+        $.post("/cart/edit", {"productId": productId, "qty": qty}, (d) => {
+          console.log(d)
+        });
+        // alert($(this).find("input").val())
+    });
+</script>

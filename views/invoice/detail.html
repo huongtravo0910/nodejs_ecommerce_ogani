@@ -1,0 +1,41 @@
+<section class="checkout spad">
+  
+    <div class="container"> 
+        <div class="checkout__form">
+        <h4>THANK YOU!</h4>  
+        <div class="row"> 
+        <div class="col-lg-8 col-md-6">
+            <div class="checkout__order">
+                <h4>Your Invoice</h4>
+                <div class="checkout__order__products">Products <span>Total</span></div>
+                <ul>
+                    {{#each arr}}
+                    <li>{{name}} <span>{{formatCurrency price}}</span></li>
+                    {{/each}}
+                </ul>
+                <div class="checkout__order__subtotal">Subtotal <span>{{formatCurrency total}}</span></div>
+                <div class="checkout__order__total">Total <span>{{formatCurrency total}}</span></div>
+                <div class="checkout__input__checkbox">
+                    <div style="font-size: 18px;color: #1c1c1c;font-weight: 700;padding-bottom: 15px;">Payment</div>
+                    <label for="paymentMethod">
+                        {{o.payment}}
+                        <input type="checkbox" id="paymentMethod" checked onclick="return false"/>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div>
+                <p> Thank you for your shopping at Ogani.</p>
+                <p>
+                    Your products will be shipped to <strong>{{o.address}}</strong>. We will contact you via the phone number: <strong>{{o.phone}}</strong>.
+                </p>                
+            </div>
+            <br></br>
+            <a href="/" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+        </div>  
+        </div>   
+    </div>
+    </div>
+</section>
